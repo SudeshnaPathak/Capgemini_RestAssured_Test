@@ -9,10 +9,10 @@ import static io.restassured.RestAssured.*;
 import java.util.HashMap;
 
 public class ShopperLoginTest {
-	static String baseUrl = "https://www.shoppersstack.com/shopping";
-	static String accessToken;
-	static String shopperId;
-	@Test()
+	private final static String baseUrl = "https://www.shoppersstack.com/shopping";
+	private static String accessToken;
+	private static int shopperId;
+	@Test
 	public void loginTest()
 	{
 		HashMap<String, Object> body = new HashMap<>();
@@ -21,20 +21,20 @@ public class ShopperLoginTest {
 		body.put("password", "Sudeshna@123");
 		body.put("role", "SHOPPER");
 		
-		Response res = 
-			 given()
+		Response res = given()
 				.contentType("application/json")
 				.relaxedHTTPSValidation() //allows to access the server
 				.body(body)
-			.when()
-				.post(baseUrl+"/users/login");
+				.baseUri(baseUrl)
+				.when()
+				.post("/users/login");
 			
 		res.then()
 			.assertThat().statusCode(200)
 			.log().all();
 		
-		accessToken = res.jsonPath().getString("data.jwtToken");
-		shopperId = res.jsonPath().getString("data.userId");
+		accessToken = res.path("data.jwtToken"); 
+		shopperId = res.jsonPath().getInt("data.userId");
 	}
 	
 	@Test(dependsOnMethods = "loginTest")
@@ -46,12 +46,13 @@ public class ShopperLoginTest {
 			.contentType("application/json")
 			.auth().oauth2(accessToken)
 			.pathParam("shopperId", shopperId)
+			.baseUri(baseUrl)
 			.relaxedHTTPSValidation()
 		.when()
-			.get(baseUrl+"/shoppers/{shopperId}")
+			.get("/shoppers/{shopperId}")
 		.then()
-		.assertThat().statusCode(200)
-		.log().all();
+			.assertThat().statusCode(200)
+			.log().all();
 	}
 
 }
