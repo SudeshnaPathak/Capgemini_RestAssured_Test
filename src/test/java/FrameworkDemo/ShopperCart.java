@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.is;
 
 import org.testng.annotations.Test;
 
+import FrameworkDemo.pojos.CartPojo;
 import io.restassured.response.Response;
 
 public class ShopperCart extends BaseClass{

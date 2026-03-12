@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import org.testng.annotations.BeforeClass;
 
+import FrameworkDemo.pojos.ShopperLoginPojo;
 import io.restassured.response.Response;
 
 public class BaseClass {
@@ -15,6 +16,9 @@ public class BaseClass {
 	public static int shopperId;
 	public static int productId;
 	public static int itemId;
+	public static int quantity;
+	public static int addressId;
+	public static int orderId;
 	
 	@BeforeClass
 	public void login()

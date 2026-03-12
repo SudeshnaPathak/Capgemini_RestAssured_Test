@@ -1,4 +1,4 @@
-package FrameworkDemo;
+package FrameworkDemo.pojos;
 
 public class ProfileUpdatePojo {
 	private String city;

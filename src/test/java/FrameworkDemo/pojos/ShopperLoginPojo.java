@@ -1,4 +1,4 @@
-package FrameworkDemo;
+package FrameworkDemo.pojos;
 
 public class ShopperLoginPojo {
 	private String email;

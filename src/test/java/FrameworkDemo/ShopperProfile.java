@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
+import FrameworkDemo.pojos.ProfileUpdatePojo;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
@@ -52,9 +53,8 @@ public class ShopperProfile extends BaseClass{
 				profile.get("firstName"),
 				profile.get("lastName"),
 				profile.get("country"),
-				8825250158L
+				8835350158L
 				);
-		System.out.println(payload);
 		given()
 			.contentType("application/json")
 			.auth().oauth2(accessToken)
