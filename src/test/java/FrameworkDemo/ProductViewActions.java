@@ -25,7 +25,7 @@ public class ProductViewActions extends BaseClass{
 		.when()
 		.get("products");
 		
-		ProductPojo[] products = res.jsonPath().getObject("data", ProductPojo[].class);
+		List<ProductPojo> products = res.jsonPath().getList("data", ProductPojo.class);
 		System.out.println(products);
 //		List<Integer> productIds = res.jsonPath().getList("data.productId");
 		List<Integer> productIds = res.path("data.productId");
@@ -46,5 +46,6 @@ public class ProductViewActions extends BaseClass{
 		FileWriter file = new FileWriter("src/test/resources/response.json");
 		file.write(res.asPrettyString());
 		file.close();
+		
 	}
 }

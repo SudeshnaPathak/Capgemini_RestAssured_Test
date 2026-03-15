@@ -31,11 +31,11 @@
 	</dependency>
 	<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency>
-	    <groupId>org.projectlombok</groupId>
-	    <artifactId>lombok</artifactId>
-	    <version>1.18.42</version>
-	    <scope>compile</scope>
-	</dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.30</version>
+    <scope>provided</scope>
+</dependency>
 	<!-- Source: https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
 	<dependency>
 	    <groupId>com.fasterxml.jackson.datatype</groupId>
