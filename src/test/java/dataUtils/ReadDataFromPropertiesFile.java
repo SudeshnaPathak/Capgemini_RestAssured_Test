@@ -16,11 +16,15 @@ public class ReadDataFromPropertiesFile {
 	
 	@BeforeSuite
 	public static void fetchData() throws IOException{
+		//Convert physical representation of properties file into java representation
 		FileInputStream fis = new FileInputStream(
 				"C:\\Users\\Sudeshna Pathak\\eclipse-workspace\\Capgemini_RestAssured\\src\\test\\resources\\configData\\configData.properties");
+		
+		//Using Properties class load all the keys
 		Properties p = new Properties();
 		p.load(fis);
 		
+		//Fetch the value using keys
 		email = p.getProperty("email");
 		System.out.println("Email:" + email);
 		
